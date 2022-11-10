@@ -1,5 +1,6 @@
 #! /bin/sh
 
+sudo chmod +x ./scripts/psql_docker.sh
 #capture CLI arguments
 cmd=$1
 db_username=$2
