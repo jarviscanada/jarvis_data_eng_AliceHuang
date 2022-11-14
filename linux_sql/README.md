@@ -55,18 +55,13 @@ crontab -l
 ```
 
 # Implementation
-We first designed an Architecture for this project, the diagram has been shown below. 
-
-We would create a docker container in each of the hosts, the docker container will provision our psql instance that will be created later. Then we will create a psql instance to store two tables: *host_info* and *host_usage*. We will collect hardware information in each of the services and store them as variables, parse them into psql command to insert them into two tables. 
-
-Those functions will be executed through *psql_docker.sh*, *host_info.sh*, *host_usage.sh* and *ddl.sql*.
+We designed an Architecture for this project, the diagram has been shown below. We implemented the program by using Linux command lines, Bash scripts, PostgreSQL, docker, IntelliJ IDE.
 ## Architecture
 ![architecture_diagram](./assets/architecture_diagram.png)
-Each of the servers in the Jarvis LCA team will have two *Bash_agent*: *host_info* and *host_usage*, to send data we need to the shared psql instance we created by using the docker container before. The two *Bash_agent* will have individual tasks:
-
-*host_info*: Store hardware information as variables, and insert data into qsql table.
-
-*host_usage*: Store Memory/CPU usage as variables and insert data into qsql table every minute, execute by crontab.
+- A `psql` instance is used to persist all the data
+- The `bash agent` gathers server usage data, and then insert into the psql instance. The `agent` will be installed on every host/server/node. The `agent` consists of two bash scripts
+    - `host_info.sh` collects the host hardware info and insert it into the database. It will be run only once at the installation time.
+    - `host_usage.sh` collects the current host usage (CPU and Memory) and then insert into the database. It will be triggered by the `cron` job every minute.
 ## Scripts
 Shell script description and usage:
 - psql_docker.sh (created a docker container to provision psql instance)
@@ -210,16 +205,9 @@ postgres=# \dt
 ```
 You will see the schema of two tables.
 
-Then we run *host_info.sh* and *host_usage.sh*, it will show "INSERT 0 1" in command line. We can also log in to the psql instance and check the tables, the data are successfully inserted. Then we set up the crontab and get back to psql a few minutes after, there are several data inside the host_usage table, then we could claim that this feature performs well.
+Then we run *host_info.sh* and *host_usage.sh*, it will show "INSERT 0 1" in command line. We can also log in to the psql instance and check the tables, the data are successfully inserted. Then we set up the crontab and get back to psql a few minutes after, there are several data inside the host_usage table, then we could confirm that this feature performs well.
 # Deployment
-We deploy this app by following the discipline of Gitflow on Github.
-
-The "main", "develop", and "release" branches were created at first at the same time.
-
-As an agile scrum team, we would have a sprint planning with the scrum master to split the features into different tickets, we would have daily scrum meetings to be connected to other teammates, support each other and discuss the possible issues of implementations.
-
-For each feature we would create a unique branch to implement and test on this branch, if it performs well, we will merge this branch into the "develop" branch. After testing and debugging the whole app successfully, we then merge the "develop" branch to the "release" branch. Then we will make a pull request to have the senior developer review the code then we can merge the "release" branch to the "main" branch. It would be the latest final version of this app.
-
+The agent program is scheduled using cron. Source code is managed by GitHub. Database is provisioned with Docker.
 # Improvements
 - **More clear signals:** As we test through the app, we found out the signals sometimes are hard to see, for example, "the container was created before" may hide under the result of opening the docker server, which is hard to find this signal.
 - **A one-for-all Automatic script:** We may help the user generate the whole command through only one script, so that would be more efficient. For example, we can combine the psql_docker.sh and ddl.sql together.
