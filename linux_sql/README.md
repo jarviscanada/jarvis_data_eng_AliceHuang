@@ -15,7 +15,14 @@ give feedback for future improvement), not a final version of the product. The f
 # Quick Start
 - Start a psql instance using psql_docker.sh
 ```bash
-./scripts/psql_docker.sh start|stop|create [db_username][db_password]
+# Open the docker server and create a container:
+./scripts/psql_docker.sh create [db_username][db_password]
+
+# Start a container:
+./scripts/psql_docker.sh start
+
+# You can stop the container anytime by entering:
+./scripts/psql_docker.sh stop
 ```
 - Create tables using ddl.sql
 ```bash
@@ -63,14 +70,7 @@ Each of the servers in the Jarvis LCA team will have two *Bash_agent*: *host_inf
 Shell script description and usage:
 - psql_docker.sh (created a docker container to provision psql instance)
 ```bash
-# Open the docker server and create a container:
-./scripts/psql_docker.sh create [db_username][db_password]
-
-# Start a container:
-./scripts/psql_docker.sh start
-
-# You can stop the container anytime by entering:
-./scripts/psql_docker.sh stop
+./scripts/psql_docker.sh start|stop|create [db_username][db_password]
 ```
 - host_info.sh (Gather the hardware information, insert them into the table)
 ```bash
