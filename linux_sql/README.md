@@ -65,6 +65,7 @@ Those functions will be executed through *psql_docker.sh*, *host_info.sh*, *host
 Each of the servers in the Jarvis LCA team will have two *Bash_agent*: *host_info* and *host_usage*, to send data we need to the shared psql instance we created by using the docker container before. The two *Bash_agent* will have individual tasks:
 
 *host_info*: Store hardware information as variables, and insert data into qsql table.
+
 *host_usage*: Store Memory/CPU usage as variables and insert data into qsql table every minute, execute by crontab.
 ## Scripts
 Shell script description and usage:
