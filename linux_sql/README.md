@@ -47,10 +47,10 @@ crontab -e
 crontab -l
 ```
 
-# Implemenation
+# Implementation
 We first designed an Architecture for this project, the diagram has been shown below. 
 
-We would create a docker container in each of the hosts, the docker container will provision our psql instance that will be created later. Then we will create a psql instance to store 2 tables: host_info and host_usage. We will collect hardware information in each of the services and store them as variables, parse them into psql command to insert them into two tables. 
+We would create a docker container in each of the hosts, the docker container will provision our psql instance that will be created later. Then we will create a psql instance to store two tables: *host_info* and *host_usage*. We will collect hardware information in each of the services and store them as variables, parse them into psql command to insert them into two tables. 
 
 Those functions will be executed through *psql_docker.sh*, *host_info.sh*, *host_usage.sh* and *ddl.sql*.
 ## Architecture
