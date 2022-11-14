@@ -220,6 +220,6 @@ As an agile scrum team, we would have a sprint planning with the scrum master to
 For each feature we would create a unique branch to implement and test on this branch, if it performs well, we will merge this branch into the "develop" branch. After testing and debugging the whole app successfully, we then merge the "develop" branch to the "release" branch. Then we will make a pull request to have the senior developer review the code then we can merge the "release" branch to the "main" branch. It would be the latest final version of this app.
 
 # Improvements
-- More clear signals: As we test through the app, we found out the signals sometimes are hard to see, for example, "the container was created before" may hide under the result of opening the docker server, which is hard to find this signal.
-- An one-for-all Automatic script: We may help the user generate the whole command through only one script, so that would be more efficient. For example, we can combine the psql_docker.sh and ddl.sql together.
-- Encode the password for a safer environment: the password we log in to the psql instance is stored in export variables inside the system, we can design a function to encode the password for a safer log-in environment.
+- **More clear signals:** As we test through the app, we found out the signals sometimes are hard to see, for example, "the container was created before" may hide under the result of opening the docker server, which is hard to find this signal.
+- **A one-for-all Automatic script:** We may help the user generate the whole command through only one script, so that would be more efficient. For example, we can combine the psql_docker.sh and ddl.sql together.
+- **Encode the password for a safer environment:** the password we log in to the psql instance is stored in export variables inside the system, we can design a function to encode the password for a safer log-in environment.
