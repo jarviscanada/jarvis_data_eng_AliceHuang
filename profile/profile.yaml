@@ -1,12 +1,11 @@
 # Preferred name (Characters only)
-name: "John Smith"
+name: "Alice Huang"
 # Your GitHub repo root URL
-github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_demo
+github_repo_root_url: https://github.com/jarviscanada/jarvis_data_eng_AliceHuang
 
 # Introduce yourself, your academic and professional background.
 # What excites you about the software industry and your passion. At least 80 words
-summary: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed venenatis a orci ac malesuada. Vivamus ligula elit, viverra eu ante porttitor, blandit convallis augue. Aliquam justo justo, mollis at lacus eu, rutrum finibus est. Vestibulum venenatis purus id accumsan pretium. In efficitur magna nec enim laoreet tincidunt. Ut libero metus, scelerisque nec eros vitae, sagittis pellentesque enim. Donec dictum felis volutpat, vehicula magna eu, imperdiet elit. Phasellus ut velit a massa efficitur faucibus. Sed volutpat, lacus sed sagittis luctus, elit.
-
+summary: I am a recent graduate of the University of British Columbia that completed my Bachelor's degree in Mathematics and a minor in Computer Science. During my undergraduate life, I learned a lot about coding languages and Algorithms. My favourite topic was front-end development ,so I went for a 3-months-intern at Manong Technology Ltd. where I learned HTML/CSS, Javascript and Vue.js and gained experience in Agile team and Sass development. I am currently working in Jarvis Consulting Group as a technical consultant, I started to dig more of my interes and learned more about the problem solving, gained experience in a Agile scrum team. I hope I am not limited to front-end development but also full-stack development. I am a positive-thingking person who love problem-solvings. I believe that the technology is changing our lives and I want to be one of the top developers to implement more softwares to change people's life and solve issues. I hope I can find a full-stack developer position where I can grow as such developer and apply my skills to help the organization to thrive.
 # Group your skills by level.
 # Your skills can be anything software related (e.g. language, frameworks, methodologies, software, etc.).
 skills:
