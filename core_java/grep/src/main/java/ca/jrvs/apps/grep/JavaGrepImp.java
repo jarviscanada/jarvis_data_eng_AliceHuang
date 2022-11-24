@@ -1,7 +1,8 @@
 package ca.jrvs.apps.grep;
 
-import com.sun.org.slf4j.internal.Logger;
-import com.sun.org.slf4j.internal.LoggerFactory;
+
+
+
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileWriter;
@@ -10,6 +11,9 @@ import java.util.ArrayList;
 import java.util.*;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
+
 
 public class JavaGrepImp implements JavaGrep {
 
@@ -68,7 +72,7 @@ public class JavaGrepImp implements JavaGrep {
     try {
       directoryPath = new File(rootDir);
     } catch (Exception e)  {
-      logger.error("Unable to load files", e);
+      logger.info("Unable to find path", e);
     } finally {
       File fileList[] = directoryPath.listFiles();
       for (File file: fileList) {
