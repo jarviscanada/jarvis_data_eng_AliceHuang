@@ -4,7 +4,7 @@
   <artifactId>jdbc</artifactId>
   <version>1.0.0-SNAPSHOT</version>
   <properties>
-    <java.verion>8</java.verion>
+    <java.verion>1.8</java.verion>
     <maven.compiler.target>${java.version}</maven.compiler.target>
     <maven.compiler.source>${java.version}}</maven.compiler.source>
   </properties>
@@ -13,6 +13,11 @@
       <groupId>org.postgresql</groupId>
       <artifactId>postgresql</artifactId>
       <version>42.2.5</version>
+    </dependency>
+    <dependency>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.28</version>
     </dependency>
   </dependencies>
 </project>
