@@ -1,0 +1,12 @@
+target/
+*.class
+*.jar
+*.war
+*.ear
+*.logs
+*.iml
+.idea/
+.eclipse
+core_java/grep/log
+core_java/grep/out/*
+intellij-java-google-style.xml
