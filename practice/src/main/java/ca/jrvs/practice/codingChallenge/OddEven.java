@@ -18,26 +18,26 @@ public class OddEven {
 
   @Test
   public void testModBaseCase() {
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenMod(1), "odd");
+    assertEquals(oddEven.oddEvenMod(1), "odd");
   }
   @Test
   public void testModMultipleCase() {
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenMod(2), "even");
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenMod(100235), "odd");
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenMod(3132131),"odd");
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenMod(22222), "even");
+    assertEquals(oddEven.oddEvenMod(2), "even");
+    assertEquals( oddEven.oddEvenMod(100235), "odd");
+    assertEquals(oddEven.oddEvenMod(3132131),"odd");
+    assertEquals(oddEven.oddEvenMod(22222), "even");
   }
 
   @Test
   public void testBitBaseCase() {
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenBit(1), "odd");
+    assertEquals(oddEven.oddEvenBit(1), "odd");
   }
   @Test
   public void testBitMultipleCase() {
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenBit(2), "even");
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenBit(100235), "odd");
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenBit(3132131),"odd");
-    assertEquals( "Regular multiplication should work", oddEven.oddEvenBit(22222), "even");
+    assertEquals(oddEven.oddEvenBit(2), "even");
+    assertEquals(oddEven.oddEvenBit(100235), "odd");
+    assertEquals(oddEven.oddEvenBit(3132131),"odd");
+    assertEquals(oddEven.oddEvenBit(22222), "even");
   }
   /**
    * Big-O: O(1)
