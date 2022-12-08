@@ -2,6 +2,7 @@ import static org.junit.Assert.assertEquals;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 import org.junit.Before;
 import org.junit.Test;
 
@@ -25,8 +26,24 @@ public class CompareTwoMap {
    * Justification: Implement equals in HashJMap
    */
   public <K,V> boolean compareMapsImp(Map<K,V> m1, Map<K,V> m2){
-    return false;
+    if (m1.isEmpty() && m2.isEmpty()) {
+      return true;
+    }
+    if (m1.size() != m2.size()) {
+      return false;
+    }
+    if (m1.keySet().equals(m2.keySet())) {
+      for (Object o: m1.keySet()) {
+        if (m1.get(o).equals(m2.get(o))) {
+        } else {
+          return false;
+        }
+      }
+    }
+    return true;
   }
+
+
   @Before
   public void setUp() {
     compareTwoMap = new CompareTwoMap();
@@ -37,8 +54,8 @@ public class CompareTwoMap {
     Map m1 = new HashMap();
     Map m2 = new HashMap();
     assertEquals(compareTwoMap.compareMapsCol(m1, m2), true);
+    assertEquals(compareTwoMap.compareMapsImp(m1, m2), true);
   }
-
   @Test
   public void TestTrueCase() {
     Map m1 = new HashMap();
@@ -50,6 +67,7 @@ public class CompareTwoMap {
     m1.put(3,"Same");
     m2.put(3,"Same");
     assertEquals(compareTwoMap.compareMapsCol(m1, m2), true);
+    assertEquals(compareTwoMap.compareMapsImp(m1, m2), true);
   }
 
   @Test
@@ -61,6 +79,7 @@ public class CompareTwoMap {
     m2.put(1,"No");
     m2.put(2,"Same");
     assertEquals(compareTwoMap.compareMapsCol(m1, m2), false);
+    assertEquals(compareTwoMap.compareMapsImp(m1, m2), false);
   }
 
 }
