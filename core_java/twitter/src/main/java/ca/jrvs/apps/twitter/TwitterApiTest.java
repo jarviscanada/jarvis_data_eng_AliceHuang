@@ -37,7 +37,7 @@ public class TwitterApiTest {
     consumer.sign(request);
 
     twitterApiTest.logger.info("Http Request Headers:");
-    Arrays.stream(request.getAllHeaders()).forEach(System.out::println);
+    Arrays.stream(request.getAllHeaders()).map(Object::toString).forEach(twitterApiTest.logger::info);
 
     // Send the request
 
