@@ -1,4 +1,7 @@
-package ca.jrvs.apps.twitter.dao;
+package ca.jrvs.apps.twitter.utils;
+
+import java.io.UnsupportedEncodingException;
+import java.net.URISyntaxException;
 
 public interface CrdDao<T, ID> {
 
@@ -7,7 +10,7 @@ public interface CrdDao<T, ID> {
    * @param entity entity that to be created
    * @return created entity
    */
-  T create(T entity);
+  T create(T entity) throws UnsupportedEncodingException, URISyntaxException;
 
   /**
    * Find an entity(Tweet) by its id

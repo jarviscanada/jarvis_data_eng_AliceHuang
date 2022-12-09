@@ -1,4 +1,4 @@
-package ca.jrvs.apps.twitter.service;
+package ca.jrvs.apps.twitter.utils;
 
 import ca.jrvs.apps.twitter.model.Tweet;
 import java.util.List;
