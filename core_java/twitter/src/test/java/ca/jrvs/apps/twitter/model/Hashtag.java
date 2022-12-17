@@ -1,22 +1,36 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Arrays;
 import java.util.List;
 
 public class Hashtag {
-
-  private int[][] indices;
+  @JsonProperty("indices")
+  private int[] indices;
+  @JsonProperty("text")
   private String text;
-
-  public Hashtag(int[][] indices, String text) {
+  public Hashtag() {
+    super();
+  }
+  public Hashtag(int[] indices, String text) {
     this.indices = indices;
     this.text = text;
   }
 
-  public int[][] getIndices() {
+  @Override
+  public String toString() {
+    return "Hashtag{" +
+        "indices=" + Arrays.toString(indices) +
+        ", text='" + text + '\'' +
+        '}';
+  }
+
+  public int[] getIndices() {
     return indices;
   }
 
-  public void setIndices(int[][] indices) {
+  public void setIndices(int[] indices) {
     this.indices = indices;
   }
 

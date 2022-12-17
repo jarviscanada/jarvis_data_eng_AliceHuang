@@ -1,20 +1,31 @@
 package ca.jrvs.apps.twitter.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
+import java.util.Arrays;
 import java.util.List;
 
 public class Coordinates {
-  private float longitude;
-  private float latitude;
+  @JsonProperty("coordinates")
   private float[] coordinates = new float[2];
 
   private String type;
 
-  public Coordinates(float longitude, float latitude, String type) {
-    this.longitude = longitude;
-    this.latitude = latitude;
-    this.coordinates[0] = longitude;
-    this.coordinates[1] = latitude;
+  public Coordinates(){
+    super();
+  }
+
+  public Coordinates(float[] coordinates, String type) {
+    this.coordinates = coordinates;
     this.type = type;
+  }
+
+  @Override
+  public String toString() {
+    return "Coordinates{" +
+        ", coordinates=" + Arrays.toString(coordinates) +
+        ", type='" + type + '\'' +
+        '}';
   }
 
   public String getType() {
@@ -25,23 +36,6 @@ public class Coordinates {
     this.type = type;
   }
 
-  public float getLongitude() {
-    return longitude;
-  }
-
-  public void setLongitude(float longitude) {
-    this.longitude = longitude;
-    this.coordinates[0] = longitude;
-  }
-
-  public float getLatitude() {
-    return latitude;
-  }
-
-  public void setLatitude(float latitude) {
-    this.latitude = latitude;
-    this.coordinates[1] = latitude;
-  }
 
   public float[] getCoordinates() {
     return coordinates;
@@ -49,7 +43,5 @@ public class Coordinates {
 
   public void setCoordinates(float[] coordinates) {
     this.coordinates = coordinates;
-    this.longitude = coordinates[0];
-    this.latitude = coordinates[1];
   }
 }

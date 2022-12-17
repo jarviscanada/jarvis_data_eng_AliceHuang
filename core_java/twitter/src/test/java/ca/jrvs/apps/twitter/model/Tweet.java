@@ -1,24 +1,39 @@
 package ca.jrvs.apps.twitter.model;
 
-import java.util.List;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonProperty;
 
 public class Tweet {
+  @JsonProperty("created_at")
   private String created_at;
-  private int id;
+  @JsonProperty("id")
+  private long id;
+  @JsonProperty("id_str")
   private String id_str;
+  @JsonProperty("text")
   private String text;
+  @JsonProperty("coordinates")
   private Coordinates coordinates;
+  @JsonProperty("retweet_count")
   private int retweet_count;
+  @JsonProperty("favorite_count")
   private int favorite_count;
+  @JsonProperty("favorited")
   private boolean favorited;
+  @JsonProperty("retweeted")
   private boolean retweeted;
-  private List<Entities> entities;
+  @JsonProperty("entities")
+  private Entities entities;
 
-  public Tweet(String created_at, int id, String text, Coordinates coordinates, int retweet_count,
-      int favorite_count, boolean favorited, boolean retweeted, List<Entities> entities) {
+  public Tweet() {
+    super();
+  }
+  public Tweet(String created_at, long id, String id_str, String text, Coordinates coordinates,
+      int retweet_count, int favorite_count, boolean favorited, boolean retweeted,
+      Entities entities) {
     this.created_at = created_at;
     this.id = id;
-    this.id_str = String.valueOf(id);
+    this.id_str = id_str;
     this.text = text;
     this.coordinates = coordinates;
     this.retweet_count = retweet_count;
@@ -26,6 +41,22 @@ public class Tweet {
     this.favorited = favorited;
     this.retweeted = retweeted;
     this.entities = entities;
+  }
+
+  @Override
+  public String toString() {
+    return "Tweet{" +
+        "created_at:'" + created_at + '\'' +
+        ", id:" + id +
+        ", id_str:'" + id_str + '\'' +
+        ", text:'" + text + '\'' +
+        ", coordinates:" + coordinates.toString() +
+        ", retweet_count:" + retweet_count +
+        ", favorite_count:" + favorite_count +
+        ", favorited:" + favorited +
+        ", retweeted:" + retweeted +
+        ", entities:" + entities.toString() +
+        '}';
   }
 
   public String getCreated_at() {
@@ -42,16 +73,14 @@ public class Tweet {
 
   public void setId_str(String id_str) {
     this.id_str = id_str;
-    this.id = Integer.valueOf(id_str);
   }
 
-  public int getId() {
+  public long getId() {
     return id;
   }
 
-  public void setId(int id) {
+  public void setId(long id) {
     this.id = id;
-    this.id_str = String.valueOf(id);
   }
 
   public String getText() {
@@ -102,11 +131,11 @@ public class Tweet {
     this.retweeted = retweeted;
   }
 
-  public List<Entities> getEntities() {
+  public Entities getEntities() {
     return entities;
   }
 
-  public void setEntities(List<Entities> entities) {
+  public void setEntities(Entities entities) {
     this.entities = entities;
   }
 }
