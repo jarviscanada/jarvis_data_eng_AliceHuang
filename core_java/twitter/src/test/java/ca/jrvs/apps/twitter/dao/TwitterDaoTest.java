@@ -29,11 +29,11 @@ private TwitterDao dao;
   }
 
   @Test
-  public void create() throws IOException, URISyntaxException {
-    String hashTag = "#abc";
-    String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
-    float lat = -75.14310264f;
-    float lon = 40.05701649f;
+  public void create() throws IOException {
+    String hashTag = "#Overwatch";
+    String text = "@saikumuchon Hero never die! " + hashTag + " " + System.currentTimeMillis();
+    float lat = -81.31011004242582f;
+    float lon = 42.98693964646016f;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
     String json = JsonParser.toJson(postTweet, true, false);
     System.out.println(json);
@@ -59,9 +59,9 @@ private TwitterDao dao;
 
   @Test
   public void show() throws URISyntaxException {
-    String hashTag = "#abc";
-    String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
-    String id = "1603947319367434240";
+    String hashTag = "#tims";
+    String text = "meow " + hashTag + " @saikumuchon";
+    String id = "1604175331652698112";
     Tweet tweet = dao.findById(id);
 
     assertEquals(id, tweet.getId_str());
@@ -70,7 +70,7 @@ private TwitterDao dao;
     assertNotNull(tweet.getEntities().getHashtags());
     assertEquals(tweet.getEntities().getHashtags().get(0).getText(), hashTag.replaceAll("#", ""));
     assertNotNull(tweet.getEntities().getUser_mentions());
-    assertEquals(tweet.getEntities().getUser_mentions().get(0).getScreen_name(), "someone");
+    assertEquals(tweet.getEntities().getUser_mentions().get(0).getScreen_name(), "saikumuchon");
   }
 
   @Test

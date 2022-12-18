@@ -36,7 +36,7 @@ public class TwitterDao implements CrdDao<Tweet,String> {
     this.httpHelper = httpHelper;
   }
 
-  public Tweet create(Tweet tweet) throws UnsupportedEncodingException, URISyntaxException {
+  public Tweet create(Tweet tweet) {
     URI uri;
     try {
       uri = getPostUri(tweet);

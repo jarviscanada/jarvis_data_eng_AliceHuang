@@ -20,7 +20,8 @@ public class TweetUtil {
     float[] coord = new float[] {longitude, latitude};
     Coordinates coordinates = new Coordinates(coord, "Point");
     Entities entities = new Entities(extractHashtags(text), extractUserMention(text));
-    Tweet tweet = new Tweet(extractTime(text), 0,"0", text, coordinates,0 , 0, false, false, entities);
+
+    Tweet tweet = new Tweet(extractTime(System.currentTimeMillis()), 0,"0", text, coordinates,0 , 0, false, false, entities);
     return tweet;
   }
   public static List<Hashtag> extractHashtags(String text) {
@@ -53,10 +54,8 @@ public class TweetUtil {
     return um;
   }
 
-  public static String extractTime(String text) {
-    String[] s = text.split(" ");
-    long timeMillis = Long.parseLong(s[s.length - 1]);
-    Date currentDate = new Date(timeMillis);
+  public static String extractTime(long l) {
+    Date currentDate = new Date( l);
     return currentDate.toString();
   }
 
