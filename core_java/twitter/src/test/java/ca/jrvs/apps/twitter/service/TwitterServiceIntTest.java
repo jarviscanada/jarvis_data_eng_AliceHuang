@@ -54,7 +54,7 @@ public class TwitterServiceIntTest {
 
 
   @Test
-  public void showTweet() throws URISyntaxException {
+  public void showTweet() throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
     String id = "21321jk3bjhkj";
     String[] fiels = new String[0];
     exceptionRule.expect(RuntimeException.class);

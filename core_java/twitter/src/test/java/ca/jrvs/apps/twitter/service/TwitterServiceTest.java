@@ -35,7 +35,7 @@ public class TwitterServiceTest {
   }
 
   @Test
-  public void showTweet() throws URISyntaxException {
+  public void showTweet() throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
     String id = "1604175331652698112";
     when(dao.findById(any())).thenReturn(new Tweet());
     service.showTweet(id, null);

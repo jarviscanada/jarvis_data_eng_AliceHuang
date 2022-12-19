@@ -3,6 +3,7 @@ import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.utils.CrdDao;
 import ca.jrvs.apps.twitter.utils.Service;
 import java.io.UnsupportedEncodingException;
+import java.lang.reflect.Field;
 import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
@@ -53,9 +54,23 @@ public class TwitterService implements Service {
    * @throws IllegalArgumentException if id or fields param is invalid
    */
   @Override
-  public Tweet showTweet(String id, String[] fields) throws URISyntaxException {
+  public Tweet showTweet(String id, String[] fields)
+      throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
+      Tweet tweet = new Tweet();
+      Class<Tweet> tweetClass = Tweet.class;
       validateShowTweet(id);
-      return (Tweet) dao.findById(id);
+      Tweet showedTweet = (Tweet) dao.findById(id);
+      if (fields.length > 0) {
+        for (int i = 0; i < fields.length; i++) {
+          String fieldName = fields[0];
+          for (Field field : tweetClass.getFields()) {
+            if (field.getName().equals(fieldName)) {
+              field.set(fieldName, showedTweet.getClass().getField(fieldName));
+            }
+          }
+        }
+      }
+      return tweet;
   }
 
   public static void validateShowTweet(String id) {

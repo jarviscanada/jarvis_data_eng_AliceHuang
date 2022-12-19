@@ -27,7 +27,8 @@ public interface Service {
    *
    * @throws IllegalArgumentException if id or fields param is invalid
    */
-  Tweet showTweet(String id, String[] fields) throws URISyntaxException;
+  Tweet showTweet(String id, String[] fields)
+      throws URISyntaxException, NoSuchFieldException, IllegalAccessException;
 
   /**
    * Delete Tweet(s) by id(s).
