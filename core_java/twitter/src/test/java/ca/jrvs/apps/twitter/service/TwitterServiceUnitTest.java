@@ -1,6 +1,5 @@
 package ca.jrvs.apps.twitter.service;
 
-import static org.junit.Assert.*;
 import static org.mockito.ArgumentMatchers.any;
 import static org.mockito.Mockito.when;
 
@@ -18,7 +17,7 @@ import org.mockito.Mock;
 import org.mockito.junit.MockitoJUnitRunner;
 
 @RunWith(MockitoJUnitRunner.class)
-public class TwitterServiceTest {
+public class TwitterServiceUnitTest {
   @Mock
   CrdDao dao;
 
@@ -31,7 +30,7 @@ public class TwitterServiceTest {
   @Test
   public void postTweet() throws UnsupportedEncodingException, URISyntaxException {
     when(dao.create(any())).thenReturn(new Tweet());
-    service.postTweet(TweetUtil.buildTweet("test", 50.0f, 0.0f));
+    service.postTweet(TweetUtil.buildTweet("test", 50.0, 0.0));
   }
 
   @Test

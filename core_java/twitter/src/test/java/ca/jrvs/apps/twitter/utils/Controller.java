@@ -23,7 +23,8 @@ public interface Controller {
    * @return a tweet
    * @throws IllegalArgumentException if args are invalid
    */
-  Tweet showTweet(String[] args) throws URISyntaxException;
+  Tweet showTweet(String[] args)
+      throws URISyntaxException, NoSuchFieldException, IllegalAccessException;
 
   /**
    * Parse user argument and delete tweets by calling service classes

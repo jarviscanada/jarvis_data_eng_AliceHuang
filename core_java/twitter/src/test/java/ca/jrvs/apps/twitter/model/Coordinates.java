@@ -7,7 +7,7 @@ import java.util.List;
 
 public class Coordinates {
   @JsonProperty("coordinates")
-  private float[] coordinates = new float[2];
+  private Double[] coordinates;
 
   private String type;
 
@@ -15,7 +15,7 @@ public class Coordinates {
     super();
   }
 
-  public Coordinates(float[] coordinates, String type) {
+  public Coordinates(Double[] coordinates, String type) {
     this.coordinates = coordinates;
     this.type = type;
   }
@@ -37,11 +37,11 @@ public class Coordinates {
   }
 
 
-  public float[] getCoordinates() {
+  public Double[] getCoordinates() {
     return coordinates;
   }
 
-  public void setCoordinates(float[] coordinates) {
+  public void setCoordinates(Double[] coordinates) {
     this.coordinates = coordinates;
   }
 }

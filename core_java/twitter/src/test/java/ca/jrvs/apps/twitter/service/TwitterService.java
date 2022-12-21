@@ -9,6 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.yaml.snakeyaml.introspector.PropertyUtils;
 
 public class TwitterService implements Service {
   private final Logger logger = LoggerFactory.getLogger(TwitterService.class);
@@ -56,19 +57,22 @@ public class TwitterService implements Service {
   @Override
   public Tweet showTweet(String id, String[] fields)
       throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
-      Tweet tweet = new Tweet();
       Class<Tweet> tweetClass = Tweet.class;
+      Tweet tweet = new Tweet();
       validateShowTweet(id);
       Tweet showedTweet = (Tweet) dao.findById(id);
       if (fields.length > 0) {
         for (int i = 0; i < fields.length; i++) {
-          String fieldName = fields[0];
-          for (Field field : tweetClass.getFields()) {
-            if (field.getName().equals(fieldName)) {
-              field.set(fieldName, showedTweet.getClass().getField(fieldName));
-            }
-          }
+          String fieldName = fields[i];
+          Field field_to = tweetClass.getDeclaredField(fieldName);
+          field_to.setAccessible(true);
+          Field field_from = showedTweet.getClass().getDeclaredField(fieldName);
+          field_from.setAccessible(true);
+          Object o = field_from.get(showedTweet);
+          field_to.set(tweet, o);
         }
+      } else {
+        tweet = showedTweet;
       }
       return tweet;
   }

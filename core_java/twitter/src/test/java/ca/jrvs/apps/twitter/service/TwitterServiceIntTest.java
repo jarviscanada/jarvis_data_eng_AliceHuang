@@ -8,6 +8,7 @@ import ca.jrvs.apps.twitter.dao.helper.TwitterHttpHelper;
 import ca.jrvs.apps.twitter.model.Tweet;
 import ca.jrvs.apps.twitter.utils.CrdDao;
 import ca.jrvs.apps.twitter.utils.TweetUtil;
+import com.fasterxml.jackson.core.JsonProcessingException;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import org.junit.Before;
@@ -39,27 +40,28 @@ public class TwitterServiceIntTest {
     exceptionRule.expect(RuntimeException.class);
     exceptionRule.expectMessage("Coordinates are out of range");
     String text = "test";
-    float lat = -190.0f;
-    float lon = 190.0f;
+    Double lat = -190.0;
+    Double lon = 190.0;
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
     service.postTweet(postTweet);
     exceptionRule.expect(RuntimeException.class);
     exceptionRule.expectMessage("Empty text body");
     text = "";
-    lat = -81.31011004242582f;
-    lon = 42.98693964646016f;
+    lat = -81.31011004242582;
+    lon = 42.98693964646016;
     postTweet = TweetUtil.buildTweet(text, lon, lat);
     service.postTweet(postTweet);
   }
 
 
   @Test
-  public void showTweet() throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
-    String id = "21321jk3bjhkj";
-    String[] fiels = new String[0];
+  public void showTweet()
+      throws URISyntaxException, NoSuchFieldException, IllegalAccessException, JsonProcessingException {
+    String id = "16041gfhdhgdfh2698112";
+    String[] fields = new String[]{"id", "id_str", "text"};
     exceptionRule.expect(RuntimeException.class);
     exceptionRule.expectMessage("Invalid id format");
-    service.showTweet(id, fiels);
+    service.showTweet(id, fields);
   }
 
   @Test

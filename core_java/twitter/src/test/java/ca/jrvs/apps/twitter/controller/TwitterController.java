@@ -41,11 +41,11 @@ public class TwitterController implements Controller {
           + "\n Usage: TwitterCLIApp post \"tweet_text\" \" latitude:longitude\"");
     }
 
-    Float lat = null;
-    Float lon = null;
+    Double lat = null;
+    Double lon = null;
     try {
-        lat = Float.parseFloat(coordsArray[0]);
-        lon = Float.parseFloat(coordsArray[1]);
+        lat = Double.parseDouble(coordsArray[0]);
+        lon = Double.parseDouble(coordsArray[1]);
     } catch (Exception e) {
       throw new IllegalArgumentException("Invalid location format! "
           + "\n Usage: TwitterCLIApp post \"tweet_text\" \" latitude:longitude\"");
@@ -62,7 +62,8 @@ public class TwitterController implements Controller {
    * @throws IllegalArgumentException if args are invalid
    */
   @Override
-  public Tweet showTweet(String[] args) throws URISyntaxException {
+  public Tweet showTweet(String[] args)
+      throws URISyntaxException, NoSuchFieldException, IllegalAccessException {
     if (args.length < 2) {
       throw new IllegalArgumentException("Usage: TwitterCLIApp show \"tweet id\" \"field1, fields2\"");
     }
@@ -71,7 +72,7 @@ public class TwitterController implements Controller {
     if (args.length > 3) {
 
       String fields_arg = args[2];
-      fields = fields_arg.split(":");
+      fields = fields_arg.split(COMMA);
     } else {
       fields = new String[0];
     }
@@ -87,6 +88,12 @@ public class TwitterController implements Controller {
    */
   @Override
   public List<Tweet> deleteTweet(String[] args) {
-    return null;
+    if (args.length != 2) {
+      throw new IllegalArgumentException("Usage: TwitterCLIApp delete \"id1, id2, id3\"");
+    }
+    String ids = args[1];
+    String[] fields = ids.split(COMMA);
+
+    return service.deleteTweets(fields);
   }
 }

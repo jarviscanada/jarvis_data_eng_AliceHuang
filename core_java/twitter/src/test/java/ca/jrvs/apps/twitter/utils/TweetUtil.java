@@ -16,8 +16,8 @@ import net.minidev.json.JSONUtil;
 
 public class TweetUtil {
 
-  public static Tweet buildTweet(String text, Float longitude, Float latitude) {
-    float[] coord = new float[] {longitude, latitude};
+  public static Tweet buildTweet(String text, Double longitude, Double latitude) {
+    Double[] coord = new Double[] {longitude, latitude};
     Coordinates coordinates = new Coordinates(coord, "Point");
     Entities entities = new Entities(extractHashtags(text), extractUserMention(text));
 
@@ -62,8 +62,8 @@ public class TweetUtil {
   public static void main(String[] args) {
     String hashTag = "#abc";
     String text = "@someone sometext " + hashTag + " " + System.currentTimeMillis();
-    float lat = 131.0f;
-    float lon = 141.0f;
+    Double lat = 131.0;
+    Double lon = 141.0;
     System.out.println(text);
     Tweet postTweet = TweetUtil.buildTweet(text, lon, lat);
 
