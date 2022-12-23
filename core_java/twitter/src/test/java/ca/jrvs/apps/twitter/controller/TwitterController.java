@@ -7,14 +7,17 @@ import ca.jrvs.apps.twitter.utils.TweetUtil;
 import java.io.UnsupportedEncodingException;
 import java.net.URISyntaxException;
 import java.util.List;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.util.StringUtils;
 
+@org.springframework.stereotype.Controller
 public class TwitterController implements Controller {
   private static final String COORD_SEP = ":";
   private static final  String COMMA = ",";
 
   private Service service;
 
+  @Autowired
   public TwitterController(Service service) {
     this.service = service;
   }

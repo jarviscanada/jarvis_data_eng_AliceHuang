@@ -24,12 +24,16 @@ import org.apache.http.impl.client.HttpClientBuilder;
 import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
 
+@Component
 public class TwitterCLIApp {
   public  static final String USAGE = "USAGE: TwitterCLIApp post|show|delete [options]";
   private Controller controller;
   private final Logger logger = LoggerFactory.getLogger(TwitterCLIApp.class);
 
+  @Autowired
   public TwitterCLIApp(Controller controller) {
     this.controller = controller;
   }

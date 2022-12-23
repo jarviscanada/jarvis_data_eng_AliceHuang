@@ -14,6 +14,10 @@ import org.apache.http.util.EntityUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import com.fasterxml.jackson.databind.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Repository;
+
+@Repository
 public class TwitterDao implements CrdDao<Tweet,String> {
 
   private final Logger logger = LoggerFactory.getLogger(TwitterDao.class);
@@ -30,6 +34,7 @@ public class TwitterDao implements CrdDao<Tweet,String> {
   //Response Code
   private static final int HTTP_OK = 200;
 
+  @Autowired
   private HttpHelper httpHelper;
 
   public TwitterDao(HttpHelper httpHelper) {

@@ -1,4 +1,8 @@
-<project>
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns="http://maven.apache.org/POM/4.0.0"
+  xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+
   <parent>
     <groupId>org.springframework.boot</groupId>
     <artifactId>spring-boot-starter-parent</artifactId>
@@ -6,46 +10,46 @@
     <relativePath/>
   </parent>
 
-  <modelVersion>4.0.0</modelVersion>
   <groupId>ca.jrvs.apps</groupId>
   <artifactId>java_apps</artifactId>
   <version>1.0-SNAPSHOT</version>
-  <build>
-    <plugins>
-      <plugin>
-        <groupId>org.apache.maven.plugins</groupId>
-        <artifactId>maven-compiler-plugin</artifactId>
-        <configuration>
-          <source>8</source>
-          <target>8</target>
-        </configuration>
-      </plugin>
-    </plugins>
-  </build>
 
   <properties>
     <maven.compiler.source>1.8</maven.compiler.source>
     <maven.compiler.target>1.8</maven.compiler.target>
+    <start-class>ca.jrvs.apps.twitter.TwitterCLIApp</start-class>
+    <jackson.version>2.14.0</jackson.version>
   </properties>
 
   <dependencies>
-    <!-- https://mvnrepository.com/artifact/com.twitter/util-core -->
+
     <dependency>
-      <groupId>com.twitter</groupId>
-      <artifactId>util-core_2.10</artifactId>
-      <version>6.1.0</version>
+      <groupId>org.slf4j</groupId>
+      <artifactId>slf4j-log4j12</artifactId>
+      <version>1.7.28</version>
     </dependency>
 
+    <!--oauth 1.0 and httpclient4-->
     <dependency>
       <groupId>oauth.signpost</groupId>
       <artifactId>signpost-commonshttp4</artifactId>
       <version>1.2.1.2</version>
     </dependency>
     <!--Jackson JSON-->
-    <!--dependecy version is interited from the parent-->
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-core</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
     <dependency>
       <groupId>com.fasterxml.jackson.core</groupId>
       <artifactId>jackson-databind</artifactId>
+      <version>${jackson.version}</version>
+    </dependency>
+    <dependency>
+      <groupId>com.fasterxml.jackson.core</groupId>
+      <artifactId>jackson-annotations</artifactId>
+      <version>${jackson.version}</version>
     </dependency>
     <!--testing-->
     <dependency>
@@ -71,5 +75,13 @@
       <scope>test</scope>
     </dependency>
   </dependencies>
-</project>
 
+  <build>
+    <plugins>
+      <plugin>
+        <groupId>org.springframework.boot</groupId>
+        <artifactId>spring-boot-maven-plugin</artifactId>
+      </plugin>
+    </plugins>
+  </build>
+</project>

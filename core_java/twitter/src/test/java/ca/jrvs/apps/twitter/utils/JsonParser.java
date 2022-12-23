@@ -12,11 +12,10 @@ public class JsonParser {
    * Convert a java object to a JSON String
    * @param object input object
    * @return JSON String
-   * @throws com.fasterxml.jackson.core.JsonProcessingException
    */
 
   public static String toJson(Object object, boolean prettyJson, boolean includeNullValues)
-    throws JsonProcessingException {
+      throws JsonProcessingException {
     ObjectMapper m = new ObjectMapper();
     if (!includeNullValues) {
       m.setSerializationInclusion(Include.NON_NULL);

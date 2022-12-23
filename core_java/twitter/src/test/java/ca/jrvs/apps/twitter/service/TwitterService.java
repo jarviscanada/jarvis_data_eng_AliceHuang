@@ -9,12 +9,15 @@ import java.util.ArrayList;
 import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.yaml.snakeyaml.introspector.PropertyUtils;
 
+@org.springframework.stereotype.Service
 public class TwitterService implements Service {
   private final Logger logger = LoggerFactory.getLogger(TwitterService.class);
   private CrdDao dao;
 
+  @Autowired
   public TwitterService(CrdDao dao) {
     this.dao = dao;
   }
