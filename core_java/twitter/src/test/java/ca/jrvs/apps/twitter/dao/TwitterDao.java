@@ -34,9 +34,10 @@ public class TwitterDao implements CrdDao<Tweet,String> {
   //Response Code
   private static final int HTTP_OK = 200;
 
-  @Autowired
+
   private HttpHelper httpHelper;
 
+  @Autowired
   public TwitterDao(HttpHelper httpHelper) {
     this.httpHelper = httpHelper;
   }
